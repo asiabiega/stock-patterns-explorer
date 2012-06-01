@@ -30,7 +30,8 @@ class AprioriRuleExplorer(object):
     def filter_candidates(self, candidates):
         # singletons = set(itertools.chain(*self.transaction_set))
         present_in = (lambda s : 
-                        sum([self.is_subsequence(s, trans) for trans in self.transaction_set]))
+                        sum([self.is_subsequence(s, trans) 
+                             for trans in self.transaction_set]))
         frequencies = [(s, float(present_in(s)) / len(self.transaction_set)) 
                         for s in candidates]
 
@@ -46,7 +47,3 @@ class AprioriRuleExplorer(object):
             if success:
                 return True
         return False
-
-
-
-
