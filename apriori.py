@@ -24,7 +24,7 @@ class AprioriRuleExplorer(object):
         return set(self.rules)
 
     def get_candidates(self, size, frequent):
-        singletons = itertools.chain(*frequent)
+        singletons = set(itertools.chain(*frequent))
         return itertools.permutations(singletons, size)
 
     def filter_candidates(self, candidates):

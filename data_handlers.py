@@ -9,7 +9,7 @@ class CSVDataHandler(object):
     def handle_data(self, filename):
         with open(filename, 'r') as f:
             reader = csv.reader(f, delimiter=",")
-            raw_data = [row[1] for row in reader][:1000]
+            raw_data = [row[1] for row in reader]
             
             transactions = []
             for i in xrange(len(raw_data) - self.transaction_len + 1):

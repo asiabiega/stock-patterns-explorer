@@ -19,8 +19,8 @@ if __name__ == '__main__':
     stock_transactions = (data_handlers.CSVDataHandler(transaction_len=10)
                             .handle_data('data/google.csv_kwantylowo.csv'))
 
-    rule_explorer = apriori.AprioriRuleExplorer(transaction_set=test_transactions, 
-                                                min_support=0.25)
+    rule_explorer = apriori.AprioriRuleExplorer(transaction_set=stock_transactions, 
+                                                min_support=0.05)
 
     rules = rule_explorer.run()
 
