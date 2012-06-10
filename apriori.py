@@ -21,7 +21,12 @@ class AprioriRuleExplorer(object):
 
             self.rules.extend(frequent)
 
-        return set(self.rules)
+        rules = set(self.rules)
+        return [{'rule': rule, 
+                 'support': self.support(rule),
+                 'confidence': self.confidence(rule),
+                 'lift': self.lift(rule),
+                 'conviction': self.conviction(rule)} for rule in rules]
 
     def get_candidates(self, size, frequent):
         singletons = set(itertools.chain(*frequent))
@@ -47,3 +52,15 @@ class AprioriRuleExplorer(object):
                              for trans in self.transaction_set]))
 
         return float(present_in(seq)) / len(self.transaction_set)
+
+    def confidence(self, seq):
+        lhs, rhs = seq[:-1], seq[-1:]
+        return self.support(seq) / self.support(lhs)
+
+    def lift(self, seq):
+        lhs, rhs = seq[:-1], seq[-1:]
+        return self.support(seq) / (self.support(lhs) * self.support(rhs))
+
+    def conviction(self, seq):
+        lhs, rhs = seq[:-1], seq[-1:]
+        return (1 - self.support(rhs)) / (1 - self.confidence(seq))
