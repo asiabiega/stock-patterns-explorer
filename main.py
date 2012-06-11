@@ -1,5 +1,6 @@
 import apriori
 import data_handlers
+import argparse
 
 def print_rules(rules):
     for rule in rules:
@@ -25,11 +26,19 @@ if __name__ == '__main__':
         [1,2,4]
     ]
 
-    stock_transactions = (data_handlers.CSVDataHandler(transaction_len=10)
-                            .handle_data('data/google.csv_kwantylowo.csv'))
+
+    parser = argparse.ArgumentParser(description='')
+    parser.add_argument('--file', type=str)
+    parser.add_argument('--supp', type=float, default=0.09, nargs='?')
+    parser.add_argument('--trans_len', type=int, default=10, nargs='?')
+
+    args = parser.parse_args()
+
+    stock_transactions = (data_handlers.CSVDataHandler(transaction_len=args.trans_len)
+                            .handle_data(args.file))
 
     rule_explorer = apriori.AprioriRuleExplorer(transaction_set=stock_transactions, 
-                                                min_support=0.09)
+                                                min_support=args.supp)
 
     rules = rule_explorer.run()
 
