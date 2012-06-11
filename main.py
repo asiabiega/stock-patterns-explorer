@@ -8,6 +8,7 @@ def print_rules(rules):
         print "\tconf: %f" % rule['confidence']
         print "\tlift: %f" % rule['lift']
         print "\tconv: %f" % rule['conviction']
+        print "\tlevg: %f" % rule['leverage']
 
 if __name__ == '__main__':
 
@@ -32,4 +33,4 @@ if __name__ == '__main__':
 
     rules = rule_explorer.run()
 
-    print_rules(sorted(rules, key=lambda x: x['lift'], reverse=True))
+    print_rules(sorted(rules, key=lambda x: x['leverage'], reverse=True))

@@ -26,6 +26,7 @@ class AprioriRuleExplorer(object):
                  'support': self.support(rule),
                  'confidence': self.confidence(rule),
                  'lift': self.lift(rule),
+                 'leverage': self.leverage(rule),
                  'conviction': self.conviction(rule)} for rule in rules]
 
     def get_candidates(self, size, frequent):
@@ -60,6 +61,10 @@ class AprioriRuleExplorer(object):
     def lift(self, seq):
         lhs, rhs = seq[:-1], seq[-1:]
         return self.support(seq) / (self.support(lhs) * self.support(rhs))
+
+    def leverage(self, seq):
+        lhs, rhs = seq[:-1], seq[-1:]
+        return self.support(seq) - self.support(lhs) * self.support(rhs)
 
     def conviction(self, seq):
         lhs, rhs = seq[:-1], seq[-1:]
