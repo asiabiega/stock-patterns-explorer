@@ -3,7 +3,7 @@
 \usepackage[utf8]{inputenc}
 
 %opening
-\title{Raport z zadania z pracownii z przedmiotu ,,Eksploracja danych''}
+\title{Raport z zadania z pracowni z przedmiotu ,,Eksploracja danych''}
 
 \date{\today}
 \author{Joanna Biega, Paweł Kalinowski, Piotr Sobczyk}
@@ -20,7 +20,7 @@ nietrywialna informację.
 
 \subsection{Dane}
 Dane zawierały notowania spółki Google na amerykańskiej giełdzie 
-NASDAQ, zawierają one informacje z każdrgo dnia dotycze cen akcji tej firmy. Policzone zostały zwroty dzienne według wzoru: $R_t = \frac{S_t}{S_{t-1}}$.
+NASDAQ, zawierają one informacje z każdego dnia dotyczące cen akcji tej firmy. Policzone zostały zwroty dzienne według wzoru: $R_t = \frac{S_t}{S_{t-1}}$.
 Na potrzeby projektu zwroty rozważano w skali logarytmicznej, jej wybór wynika z potrzeby symetryzacji danych. 
 Następnie zostały rozważone dwa sposoby dyskretyzacji danych. Pierwszy to podział na 5 grup w zależności od przedziału kwantylowego, 
 np. danej z przedziału kwantylowego (0.2, 0.4) będzie przyporządkowana liczba -1, a danej mieszczącej się powyżej kwantyla 0.8 – liczba 2.
@@ -34,11 +34,11 @@ W celu analizy zależności w szeregu czasowym wykorzystane zostały reguły aso
 Do otrzymania reguł asocjacyjnych zastosowany został algorytm apriori, gdzie transakcjami n-elementowymi były właśnie n-elementowe podszeregi.
 
 \section{Wyniki}
-Wśród reguł wybierane były tylko te o supporcie większym niż 0,09. Ograniczenie to w znaczący wpływa na znalezione reguły: będą one dość krótkie, 
+Wśród reguł wybierane były tylko te o supporcie większym niż 0,09. Ograniczenie to w znaczący sposób wpływa na znalezione reguły: będą one dość krótkie, 
 a więc znalezione ,,zasady działania rynku'' są krótkookresowe. Podejście to ma uzasadnienie, ponieważ w dłuższym czasie na zmiany kursów wpływają 
 choćby trendy, ze względu na które zbiór uczący nie jest jednolity.
 
-Następnie wybrane zostały reguły o najbardziej odległym od 0 levereage – czyli te, które są statystycznie istotne, a nie dziełem przypadku, 
+Następnie wybrane zostały reguły o najbardziej odległym od 0 leverage – czyli te, które są statystycznie istotne, a nie dziełem przypadku, 
 wzięte zostały pod uwagę także wartości confidence i lift, które też mówią o istotności reguły i prawdopodobieństwie jej wystąpienia. 
 Ostatecznie wybrano 3 najlepsze reguły, dla długości transakcji równej 10, zaprezentowane w tabelach \ref{tab:k1} i \ref{tab:k2}.
 
