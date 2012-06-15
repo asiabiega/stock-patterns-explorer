@@ -29,9 +29,10 @@ jako 0, liczbę z przedziału $(\mu - 2 \cdot \sigma, \mu - \sigma)$ zmienia si�
 Dane przygotowane do ostatecznej analizy składały się zatem z ciągu liczb całkowitych reprezentującego szereg czasowy odpowiadający logarytmom ze zwrotów ceny akcji.
 
 \section{Używane algorytmy}
-W celu analizy zależności w szeregu czasowym wykorzystane zostały reguły asocjacyjne. W tym celu cały szereg czasowy traktowany był
- jako zbiór wielu podszeregów. Każdy z tych podszeregów był traktowany jako pewne wyrażenie, występujące wiele razy w dużym szeregu. 
-Do otrzymania reguł asocjacyjnych zastosowany został algorytm apriori, gdzie transakcjami n-elementowymi były właśnie n-elementowe podszeregi.
+W celu analizy zależności w szeregu czasowym wykorzystane zostały reguły asocjacyjne i algorytm apriori. W tym celu cały szereg czasowy traktowany był
+ jako zbiór wielu, przesuniętych o jedną jednostkę czasu, podszeregów długości $n$. Są to odpowiedniki transakcji w klasycznym algorytmie apriori. 
+Konkretne reguły asocjacyjne np. $(1,0,0)$ były odszukiwane w transakcjach. W przeciwieństwie do klasycznego algorytmu kolejność liczb całkowitych w tych
+zbiorach była ustalona, ponieważ domyślnie były one indeksowane czasem.
 
 \section{Wyniki}
 Wśród reguł wybierane były tylko te o supporcie większym niż 0,09. Ograniczenie to w znaczący sposób wpływa na znalezione reguły: będą one dość krótkie, 
@@ -41,6 +42,12 @@ choćby trendy, ze względu na które zbiór uczący nie jest jednolity.
 Następnie wybrane zostały reguły o najbardziej odległym od 0 leverage – czyli te, które są statystycznie istotne, a nie dziełem przypadku, 
 wzięte zostały pod uwagę także wartości confidence i lift, które też mówią o istotności reguły i prawdopodobieństwie jej wystąpienia. 
 Ostatecznie wybrano 3 najlepsze reguły, dla długości transakcji równej 10, zaprezentowane w tabelach \ref{tab:k1} i \ref{tab:k2}.
+
+Reguły dotyczą niewielkich zmian (mało odległych od średniej), bo tylko one wstępują dość często aby mieć support większy od ustalonego minimum.
+Nie znaleziono żadnych reguł o dodatnim leverege, a więc takich w których wystąpienie następnika jest bardziej prawdopodobne dzięku zaobserwowaniu poprzednika. Wskazuje to na trudności w modelowaniu finansowych szeregów czasowych. Uzyskana wiedza nie jest ,,pozytywna'', nie pozwala na przewidywanie zachowań rynku. Z przykładowych wielkości podanych w tabelach widać, że ta własność nie zależy od sposobu dyskretyzacji danych.
+
+Uzyskane reguły mają bardzo naturalną interpretację. I tak na przykład z tabeli \ref{tab:k1} wnioskuje się, że szybki wzrost ceny akcji z reguły $(1,0)$ powoduje zmniejszenie się szansy stabilnego zachowania ceny następnego dnia. Z reguły $(-1,0,1)$ wynika, że jeśli cena akcji poszło mocno w dół, kolejnego dnia była stabilna
+to szansa na duży wzrost następnego dnia jest mniejsza niż wynikałoby z ogólnej czestości występowania dużych wzrostów.
 
 \begin{center}
 \begin{table}
