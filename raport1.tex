@@ -80,10 +80,84 @@ to szansa na duży wzrost następnego dnia jest mniejsza niż wynikałoby z ogó
 \end{table}
 \end{center}
 
-\section{Podsumowanie}
+\section{Stabiloność reguł}
+Dla sprawdzenia ogólności reguł wykonano tą procedurę równiez na notowaniach dwóch innych spółek branży IT: IBM i Microsoft. 
+Otrzymane reguły w zdecydowanej większości się pokrywały (pełne zestawienie w sekcji ``Pełne wyniki''), co sugeruje że odkryte prawidłowości są nieprzypadkowe i są ogólną własnością giełdy/branży
 
+\section{Podsumowanie}
 Uzyskane wyniki pozwalają na wysunięcie kilku wniosków. Po pierwsze, metoda reguł asocjacyjnych nie daje wiedzy, która pozwalałaby przewidywać zmianę notowań
 giełdowych. Daje jednak ,,wiedzę negatywną'' dotyczącą tego, jakie zmiany są mało prawdopodobne (niskie confidence), lub stosunkowo rzadko występujące w określonej konfiguracji w porównaniu z częstościami występowania następnika i poprzednika (ujemne leverage). Po drugie, wiele z uzyskanych reguł cechują bardzo podobne wartości wskaźników, co rodzi problem z wyborem tych najbardziej 
 nietrywialnych. Po trzecie, długości reguł uzyskanych metodą reguł asocjacyjnych są niskie. Przy ustalonej długości transakcji 10 i minimalnymi supporcie 0.09 są to szeregi czasowe dwu lub trzyelementowe. Reasumując analiza finansowych szeregów czasowych metodą reguł asocjacyjnych daje nietrywialną wiedzę dotyczącą krótkich okresów.
+
+\section{Pełne wyniki}
+\begin{tabular}{|l|l|l|l|l|l|l|} 
+wzór & supp & conf & lift & conv & levg & spółka \\ \hline
+0, 1 & 0.331959 & 0.375949 & 0.424776 & 0.184197 & -0.449533 & MICROSOFT \\ \hline
+0, 1 & 0.339691 & 0.388332 & 0.434968 & 0.175286 & -0.441265 & GOOGLE \\ \hline
+0, 1 & 0.346392 & 0.401914 & 0.448885 & 0.174957 & -0.425280 & IBM \\ \hline
+0, 1, -1 & 0.091753 & 0.270106 & 0.313213 & 0.188560 & -0.201187 & GOOGLE \\ \hline
+0, 2 & 0.259794 & 0.296995 & 0.371243 & 0.284493 & -0.440000 & GOOGLE \\ \hline
+0, 2 & 0.276804 & 0.321172 & 0.377164 & 0.218691 & -0.457106 & IBM \\ \hline
+0, 2 & 0.330928 & 0.374781 & 0.440652 & 0.239092 & -0.420069 & MICROSOFT \\ \hline
+0, -1 & 0.303608 & 0.343841 & 0.393077 & 0.190895 & -0.468780 & MICROSOFT \\ \hline
+0, -1 & 0.344330 & 0.393636 & 0.456458 & 0.226974 & -0.410023 & GOOGLE \\ \hline
+0, -1 & 0.361856 & 0.419856 & 0.478567 & 0.211466 & -0.394267 & IBM \\ \hline
+0, -1, 1 & 0.090722 & 0.263473 & 0.295114 & 0.145570 & -0.216690 & GOOGLE \\ \hline
+0, -2 & 0.235052 & 0.266200 & 0.305217 & 0.174210 & -0.535061 & MICROSOFT \\ \hline
+0, -2 & 0.267526 & 0.310407 & 0.353813 & 0.177903 & -0.488597 & IBM \\ \hline
+0, -2 & 0.292784 & 0.334708 & 0.389756 & 0.212294 & -0.458413 & GOOGLE \\ \hline
+1, 0 & 0.319072 & 0.360513 & 0.408286 & 0.182975 & -0.462419 & MICROSOFT \\ \hline
+1, 0 & 0.347423 & 0.388025 & 0.450221 & 0.225735 & -0.424249 & IBM \\ \hline
+1, 0 & 0.354124 & 0.396651 & 0.453449 & 0.207604 & -0.426832 & GOOGLE \\ \hline
+1, 2 & 0.225258 & 0.252309 & 0.315387 & 0.267490 & -0.488969 & GOOGLE \\ \hline
+1, 2 & 0.254124 & 0.287129 & 0.337594 & 0.209694 & -0.498626 & MICROSOFT \\ \hline
+1, 2 & 0.298454 & 0.333333 & 0.391445 & 0.222680 & -0.463988 & IBM \\ \hline
+1, -1 & 0.325258 & 0.367501 & 0.420125 & 0.198036 & -0.448934 & MICROSOFT \\ \hline
+1, -1 & 0.330412 & 0.369027 & 0.420630 & 0.194431 & -0.455105 & IBM \\ \hline
+1, -1 & 0.369588 & 0.413972 & 0.480040 & 0.234850 & -0.400323 & GOOGLE \\ \hline
+1, -2 & 0.267526 & 0.298791 & 0.340573 & 0.174956 & -0.517992 & IBM \\ \hline
+1, -2 & 0.306701 & 0.343533 & 0.400033 & 0.215147 & -0.459988 & GOOGLE \\ \hline
+1, -2 & 0.310825 & 0.351194 & 0.402669 & 0.197031 & -0.461086 & MICROSOFT \\ \hline
+2, 0 & 0.275258 & 0.323245 & 0.375056 & 0.204127 & -0.458652 & IBM \\ \hline
+2, 0 & 0.300000 & 0.375000 & 0.428698 & 0.200412 & -0.399794 & GOOGLE \\ \hline
+2, 0 & 0.310309 & 0.364848 & 0.413197 & 0.184224 & -0.440687 & MICROSOFT \\ \hline
+2, 1 & 0.304639 & 0.380799 & 0.426530 & 0.173153 & -0.409588 & GOOGLE \\ \hline
+2, 1 & 0.313402 & 0.368485 & 0.416343 & 0.182020 & -0.439348 & MICROSOFT \\ \hline
+2, 1 & 0.361340 & 0.424334 & 0.473925 & 0.181771 & -0.401101 & IBM \\ \hline
+2, 1, 0 & 0.098454 & 0.272468 & 0.316141 & 0.189881 & -0.212969 & IBM \\ \hline
+2, -1 & 0.224227 & 0.280284 & 0.325015 & 0.191226 & -0.465670 & GOOGLE \\ \hline
+2, -1 & 0.250515 & 0.294189 & 0.335327 & 0.173815 & -0.496563 & IBM \\ \hline
+2, -1 & 0.291237 & 0.342424 & 0.391457 & 0.190484 & -0.452745 & MICROSOFT \\ \hline
+2, -2 & 0.250515 & 0.294189 & 0.335327 & 0.173815 & -0.496563 & IBM \\ \hline
+2, -2 & 0.297938 & 0.350303 & 0.401648 & 0.196761 & -0.443852 & MICROSOFT \\ \hline
+2, -2 & 0.332990 & 0.416237 & 0.484694 & 0.241943 & -0.354021 & GOOGLE \\ \hline
+-1, 0 & 0.275258 & 0.314673 & 0.356372 & 0.170736 & -0.497131 & MICROSOFT \\ \hline
+-1, 0 & 0.311856 & 0.355464 & 0.412440 & 0.214331 & -0.444267 & IBM \\ \hline
+-1, 0 & 0.311856 & 0.361626 & 0.413408 & 0.196214 & -0.442497 & GOOGLE \\ \hline
+-1, 1 & 0.269588 & 0.307286 & 0.343197 & 0.151057 & -0.515930 & IBM \\ \hline
+-1, 1 & 0.359278 & 0.416617 & 0.466649 & 0.183784 & -0.410632 & GOOGLE \\ \hline
+-1, 1 & 0.364948 & 0.417207 & 0.471393 & 0.197237 & -0.409244 & MICROSOFT \\ \hline
+-1, 1, 0 & 0.092784 & 0.258250 & 0.295229 & 0.168868 & -0.221492 & GOOGLE \\ \hline
+-1, 2 & 0.251546 & 0.286722 & 0.336707 & 0.208129 & -0.495532 & IBM \\ \hline
+-1, 2 & 0.281959 & 0.326958 & 0.408697 & 0.297158 & -0.407938 & GOOGLE \\ \hline
+-1, 2 & 0.305155 & 0.348851 & 0.410164 & 0.229570 & -0.438827 & MICROSOFT \\ \hline
+-1, -2 & 0.313402 & 0.363419 & 0.423189 & 0.221868 & -0.427170 & GOOGLE \\ \hline
+-1, -2 & 0.327835 & 0.374779 & 0.429711 & 0.204464 & -0.435084 & MICROSOFT \\ \hline
+-1, -2 & 0.390722 & 0.445358 & 0.507635 & 0.221189 & -0.378968 & IBM \\ \hline
+-2, 0 & 0.288660 & 0.336134 & 0.384267 & 0.188679 & -0.462536 & GOOGLE \\ \hline
+-2, 0 & 0.295361 & 0.338652 & 0.383529 & 0.176927 & -0.474752 & MICROSOFT \\ \hline
+-2, 0 & 0.303093 & 0.345476 & 0.400851 & 0.211061 & -0.453030 & IBM \\ \hline
+-2, 1 & 0.248969 & 0.285461 & 0.322536 & 0.160871 & -0.522942 & MICROSOFT \\ \hline
+-2, 1 & 0.251031 & 0.286134 & 0.319574 & 0.146581 & -0.534487 & IBM \\ \hline
+-2, 1 & 0.261856 & 0.304922 & 0.341541 & 0.154251 & -0.504834 & GOOGLE \\ \hline
+-2, 2 & 0.328351 & 0.374266 & 0.439513 & 0.237247 & -0.418728 & IBM \\ \hline
+-2, 2 & 0.342784 & 0.393026 & 0.462103 & 0.246278 & -0.399006 & MICROSOFT \\ \hline
+-2, 2 & 0.373711 & 0.435174 & 0.543968 & 0.354091 & -0.313299 & GOOGLE \\ \hline
+-2, 2, 0 & 0.090722 & 0.242759 & 0.277520 & 0.165413 & -0.236179 & GOOGLE \\ \hline
+-2, -1 & 0.313918 & 0.365546 & 0.423885 & 0.216925 & -0.426655 & GOOGLE \\ \hline
+-2, -1 & 0.322165 & 0.367215 & 0.418565 & 0.193874 & -0.447525 & IBM \\ \hline
+-2, -1 & 0.350515 & 0.401891 & 0.459440 & 0.209423 & -0.412404 & MICROSOFT \\ \hline
+-2, -1, 1 & 0.092268 & 0.263235 & 0.297424 & 0.156018 & -0.217956 & MICROSOFT \\ \hline
+\end{tabular}
 
 \end{document}
